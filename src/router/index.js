@@ -21,6 +21,9 @@ const routes = [
 const router = new Router({
   mode: "history",
   routes,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+  }
 });
 
 router.afterEach((to, from) => {
