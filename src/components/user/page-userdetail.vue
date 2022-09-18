@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="expand-btn" v-if="repoList && repoList.length>5" @click="viewMore">
+                <a class="expand-btn" v-if="repoList && repoList.length > initialRepoCount" @click="viewMore">
                     <span v-text="expand?'View All' : 'View Less'"></span>
                 </a>
             </div>
@@ -41,13 +41,14 @@ export default {
     data() {
         return {
             expand: true,
-            filterRepos: null
+            filterRepos: null,
+            initialRepoCount: 5
         }
     },
     async mounted() {
         const username = this.$route.params.username;
         await this.getUserRepositoryDetails(username);
-        this.filterRepos = this.repoList.slice(0,5);
+        this.filterRepos = this.repoList && this.repoList.slice(0, this.initialRepoCount);
     },
     computed: {
         ...mapGetters(["repositories", "loadingStatus"]),
@@ -81,7 +82,7 @@ export default {
         viewMore() {
             this.expand = !this.expand;
             if(this.expand) {
-                this.filterRepos = this.repoList.slice(0,5);
+                this.filterRepos = this.repoList.slice(0, this.initialRepoCount);
             } else {
                 this.filterRepos = this.repoList;
             }
