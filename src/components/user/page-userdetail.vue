@@ -27,7 +27,7 @@
             </div>
         </template>
         <template v-else>
-            <div>User data unavailable</div>
+            <div>User data not found</div>
         </template>
     </div>
 </template>
