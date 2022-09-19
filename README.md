@@ -1,4 +1,4 @@
-# github-userboard
+# github-userboard (Available for both desktop & mobile screens) 
 
 <b>Deployed in Netlify:</b> https://gituserboard.netlify.app/
 
